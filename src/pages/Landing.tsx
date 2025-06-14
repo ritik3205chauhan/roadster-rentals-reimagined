@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { VehicleCard } from "@/components/VehicleCard";
-import { Search, Car, Shield, Clock, Star } from "lucide-react";
+import { Search, Car, Shield, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const featuredVehicles = [
@@ -78,6 +78,75 @@ const howItWorksSteps = [
     icon: Clock,
     title: "Flexible Returns",
     description: "Extend your rental on-demand, return early for partial refunds, or schedule recurring bookings. Rate your experience to help other users."
+  }
+];
+
+const customerJourneySteps = [
+  {
+    icon: Search,
+    title: "Sign Up & Verify",
+    description: "Create account with email/phone. Upload driving license (auto-verified via AI). Complete identity verification with selfie + ID document match. Background check completed within 24 hours."
+  },
+  {
+    icon: Car,
+    title: "Search & Book",
+    description: "Browse verified vehicles with real-time availability. View owner ratings, vehicle history, and insurance details. Book instantly with $50 security deposit. Get pickup location and digital key access."
+  },
+  {
+    icon: Shield,
+    title: "Pickup & Drive",
+    description: "Use app to unlock vehicle with digital key. Complete 360° damage inspection (photos auto-uploaded). Start trip with GPS tracking. Enjoy comprehensive insurance coverage up to $1M liability."
+  },
+  {
+    icon: Clock,
+    title: "Return & Rate",
+    description: "Return to designated spot. Complete final inspection with photo evidence. Rate owner and vehicle. Automatic billing with damage protection. Get trip summary and receipt via email."
+  }
+];
+
+const ownerJourneySteps = [
+  {
+    icon: Car,
+    title: "Vehicle Registration",
+    description: "Upload vehicle registration, insurance documents, and current inspection certificate. Complete vehicle verification with VIN check. Professional photos taken or self-uploaded with quality review."
+  },
+  {
+    icon: Shield,
+    title: "Safety & Compliance",
+    description: "Install GPS tracking device (free installation). Set up smart lock system for keyless access. Complete safety inspection checklist. Activate comprehensive insurance coverage for rentals."
+  },
+  {
+    icon: Search,
+    title: "Listing & Pricing",
+    description: "Set availability calendar and pricing (dynamic pricing suggestions provided). Define pickup/return locations. Set vehicle rules and requirements. Go live after final approval (typically 2-3 days)."
+  },
+  {
+    icon: Clock,
+    title: "Earn & Manage",
+    description: "Receive booking notifications and manage requests. Track vehicle location and status in real-time. Get automatic payments (85% to owner, 15% platform fee). Access monthly earnings reports and tax documents."
+  }
+];
+
+const damageProtectionInfo = [
+  {
+    title: "Pre-Trip Inspection",
+    description: "Mandatory 360° photo documentation before each trip. AI-powered damage detection compares with baseline photos. Any existing damage flagged and recorded.",
+    coverage: "Prevents false damage claims"
+  },
+  {
+    title: "During Trip Protection",
+    description: "Real-time GPS monitoring and speed alerts. 24/7 roadside assistance included. Emergency contact system for breakdowns or accidents.",
+    coverage: "Up to $1M liability coverage"
+  },
+  {
+    title: "Damage Claims Process",
+    description: "Post-trip inspection with photo evidence. Claims reviewed within 24 hours. Professional repair estimates from approved shops. Direct billing to insurance (no owner hassle).",
+    coverage: "Up to $125,000 damage protection"
+  },
+  {
+    title: "Dispute Resolution",
+    description: "AI-assisted damage assessment using before/after photos. Independent third-party arbitration available. Fair resolution process with evidence-based decisions.",
+    coverage: "Free arbitration service"
   }
 ];
 
@@ -176,7 +245,7 @@ export const Landing = () => {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works - For Customers */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
@@ -186,14 +255,14 @@ export const Landing = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works - For Customers</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Renting a vehicle has never been easier. Follow these simple steps to get on the road.
+              From registration to return, we've streamlined every step for a seamless rental experience.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {howItWorksSteps.map((step, index) => (
+            {customerJourneySteps.map((step, index) => (
               <motion.div
                 key={step.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -206,7 +275,81 @@ export const Landing = () => {
                   <step.icon className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                <p className="text-muted-foreground text-sm">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works - For Owners */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works - For Vehicle Owners</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              List your vehicle and start earning passive income with our comprehensive protection and support system.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {ownerJourneySteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="w-8 h-8 text-green-600 dark:text-green-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Damage Protection */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Comprehensive Damage Protection</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Advanced AI-powered damage detection and comprehensive insurance coverage protect both owners and renters.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {damageProtectionInfo.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-card p-6 rounded-lg border"
+              >
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground mb-4">{item.description}</p>
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium inline-block">
+                  {item.coverage}
+                </div>
               </motion.div>
             ))}
           </div>
