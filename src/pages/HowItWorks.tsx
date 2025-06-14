@@ -9,10 +9,11 @@ const customerJourneySteps = [
   {
     icon: Search,
     title: "Sign Up & Verify",
-    description: "Create account with email/phone. Upload driving license (auto-verified via AI). Complete identity verification with selfie + ID document match. Background check completed within 24 hours.",
+    description: "Create account with email/phone. Upload multiple identity documents for comprehensive verification. Complete biometric verification with selfie matching. Background check completed within 24 hours.",
     details: [
       "Email or phone verification required",
-      "AI-powered license verification in seconds",
+      "Multiple ID verification: Driving License + PAN/Aadhar/Passport",
+      "AI-powered document verification in seconds",
       "Facial recognition identity matching",
       "Background check with criminal history screening",
       "Credit score assessment for security deposits"
@@ -340,7 +341,7 @@ export const HowItWorks = () => {
         </div>
       </section>
 
-      {/* Registration Requirements */}
+      {/* Identity Verification Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
@@ -350,7 +351,102 @@ export const HowItWorks = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Registration Requirements</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Identity Verification Documents</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Multiple document verification ensures platform security and user trust
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <Card className="p-8">
+              <CardContent className="p-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-4">Required Documents (Choose Any 2 + License)</h3>
+                    <ul className="space-y-4">
+                      <li className="flex items-center gap-3">
+                        <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+                          Mandatory
+                        </Badge>
+                        <span className="font-medium">Driving License</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Badge variant="outline">PAN Card</Badge>
+                        <span>Permanent Account Number for tax verification</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Badge variant="outline">Aadhar Card</Badge>
+                        <span>Government-issued unique identity proof</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Badge variant="outline">Passport</Badge>
+                        <span>International travelers and identity proof</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Badge variant="outline">Voter ID</Badge>
+                        <span>Alternative government identity document</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-4">Verification Process</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium text-green-600 dark:text-green-400">1</span>
+                        </div>
+                        <span className="text-sm">Upload clear photos of documents</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium text-green-600 dark:text-green-400">2</span>
+                        </div>
+                        <span className="text-sm">AI-powered document verification</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium text-green-600 dark:text-green-400">3</span>
+                        </div>
+                        <span className="text-sm">Facial recognition matching with selfie</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium text-green-600 dark:text-green-400">4</span>
+                        </div>
+                        <span className="text-sm">Background verification within 24 hours</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium text-green-600 dark:text-green-400">5</span>
+                        </div>
+                        <span className="text-sm">Verified badge upon successful completion</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Registration Requirements */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Vehicle Registration Requirements</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Different vehicle types have specific registration and compliance requirements
             </p>
