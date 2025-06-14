@@ -4,11 +4,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { Header } from "@/components/Header";
 import { Landing } from "./pages/Landing";
 import { Browse } from "./pages/Browse";
 import { HowItWorks } from "./pages/HowItWorks";
 import { OwnerDashboard } from "./pages/owner/OwnerDashboard";
+import { SignIn } from "./pages/auth/SignIn";
+import { SignUp } from "./pages/auth/SignUp";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,20 +19,24 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="system" storageKey="vehicle-rental-theme">
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/browse" element={<Browse />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
-            <Route path="/owner/dashboard" element={<OwnerDashboard />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/browse" element={<Browse />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
+              <Route path="/owner/dashboard" element={<OwnerDashboard />} />
+              <Route path="/auth/signin" element={<SignIn />} />
+              <Route path="/auth/signup" element={<SignUp />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );
