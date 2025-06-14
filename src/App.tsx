@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Landing } from "./pages/Landing";
 import { Browse } from "./pages/Browse";
+import { HowItWorks } from "./pages/HowItWorks";
 import { OwnerDashboard } from "./pages/owner/OwnerDashboard";
 import NotFound from "./pages/NotFound";
 
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/browse" element={<Browse />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/owner/dashboard" element={<OwnerDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
