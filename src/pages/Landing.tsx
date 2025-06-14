@@ -61,18 +61,23 @@ const featuredVehicles = [
 const howItWorksSteps = [
   {
     icon: Search,
-    title: "Browse",
-    description: "Search and filter vehicles by location, date, and preferences"
+    title: "Browse & Search",
+    description: "Search through thousands of vehicles including cars, bikes, and scooters. Filter by location, price, vehicle type, and availability dates to find your perfect match."
   },
   {
     icon: Car,
-    title: "Book",
-    description: "Select your perfect ride and complete the booking process"
+    title: "Book Instantly",
+    description: "Choose your vehicle, select pickup/drop-off times, and complete secure booking with instant confirmation. Upload your license and verify your identity for seamless rentals."
   },
   {
-    icon: Star,
-    title: "Drive",
-    description: "Pick up your vehicle and enjoy your journey"
+    icon: Shield,
+    title: "Drive Safely",
+    description: "Pick up your vehicle with contactless unlock, enjoy comprehensive insurance coverage, and return at your convenience. 24/7 roadside assistance included."
+  },
+  {
+    icon: Clock,
+    title: "Flexible Returns",
+    description: "Extend your rental on-demand, return early for partial refunds, or schedule recurring bookings. Rate your experience to help other users."
   }
 ];
 
@@ -187,7 +192,7 @@ export const Landing = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {howItWorksSteps.map((step, index) => (
               <motion.div
                 key={step.title}

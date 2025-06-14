@@ -24,30 +24,66 @@ const vehicles = [
   },
   {
     id: "2",
+    name: "Harley Davidson Street 750",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+    price: 35,
+    rating: 4.8,
+    location: "Los Angeles, CA",
+    seats: 2,
+    category: "Motorcycle",
+    transmission: "Manual" as const,
+    fuel: "Gasoline"
+  },
+  {
+    id: "3",
+    name: "Honda Activa 125",
+    image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=400&h=300&fit=crop",
+    price: 12,
+    rating: 4.5,
+    location: "New York, NY",
+    seats: 2,
+    category: "Scooter",
+    transmission: "Automatic" as const,
+    fuel: "Gasoline"
+  },
+  {
+    id: "4",
     name: "BMW X5",
     image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=300&fit=crop",
     price: 120,
     rating: 4.8,
-    location: "Los Angeles, CA",
+    location: "Chicago, IL",
     seats: 7,
     category: "SUV",
     transmission: "Automatic" as const,
     fuel: "Gasoline"
   },
   {
-    id: "3",
-    name: "Honda Civic",
-    image: "https://images.unsplash.com/photo-1619976215607-a4b7c0bb05f4?w=400&h=300&fit=crop",
-    price: 45,
-    rating: 4.6,
-    location: "New York, NY",
-    seats: 5,
-    category: "Compact",
+    id: "5",
+    name: "Royal Enfield Classic 350",
+    image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=400&h=300&fit=crop",
+    price: 25,
+    rating: 4.7,
+    location: "Austin, TX",
+    seats: 2,
+    category: "Motorcycle",
     transmission: "Manual" as const,
     fuel: "Gasoline"
   },
   {
-    id: "4",
+    id: "6",
+    name: "Vespa Primavera 150",
+    image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=400&h=300&fit=crop",
+    price: 18,
+    rating: 4.6,
+    location: "Miami, FL",
+    seats: 2,
+    category: "Scooter",
+    transmission: "Automatic" as const,
+    fuel: "Gasoline"
+  },
+  {
+    id: "7",
     name: "Mercedes C-Class",
     image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=300&fit=crop",
     price: 95,
@@ -59,7 +95,7 @@ const vehicles = [
     fuel: "Gasoline"
   },
   {
-    id: "5",
+    id: "8",
     name: "Toyota Prius",
     image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&h=300&fit=crop",
     price: 55,
@@ -71,7 +107,19 @@ const vehicles = [
     fuel: "Hybrid"
   },
   {
-    id: "6",
+    id: "9",
+    name: "Honda CBR 250R",
+    image: "https://images.unsplash.com/photo-1558618047-1c8c2b4a3e4b?w=400&h=300&fit=crop",
+    price: 28,
+    rating: 4.6,
+    location: "Denver, CO",
+    seats: 2,
+    category: "Motorcycle",
+    transmission: "Manual" as const,
+    fuel: "Gasoline"
+  },
+  {
+    id: "10",
     name: "Ford Mustang",
     image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=300&fit=crop",
     price: 85,
@@ -79,6 +127,30 @@ const vehicles = [
     location: "Austin, TX",
     seats: 4,
     category: "Sports",
+    transmission: "Manual" as const,
+    fuel: "Gasoline"
+  },
+  {
+    id: "11",
+    name: "TVS Jupiter",
+    image: "https://images.unsplash.com/photo-1564736781796-6161f64d4b8b?w=400&h=300&fit=crop",
+    price: 10,
+    rating: 4.4,
+    location: "Phoenix, AZ",
+    seats: 2,
+    category: "Scooter",
+    transmission: "Automatic" as const,
+    fuel: "Gasoline"
+  },
+  {
+    id: "12",
+    name: "Yamaha MT-15",
+    image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop",
+    price: 22,
+    rating: 4.5,
+    location: "Las Vegas, NV",
+    seats: 2,
+    category: "Motorcycle",
     transmission: "Manual" as const,
     fuel: "Gasoline"
   }
@@ -168,6 +240,8 @@ export const Browse = () => {
                     <SelectItem value="sports">Sports</SelectItem>
                     <SelectItem value="electric">Electric</SelectItem>
                     <SelectItem value="hybrid">Hybrid</SelectItem>
+                    <SelectItem value="motorcycle">Motorcycle</SelectItem>
+                    <SelectItem value="scooter">Scooter</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
