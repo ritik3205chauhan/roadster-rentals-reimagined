@@ -4,12 +4,13 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "your-app-id"
+  apiKey: "AIzaSyBNMkR7Vbr1Dv6Pv3wg5tn82QJG0RmKA-k",
+  authDomain: "vechile-rent-app.firebaseapp.com",
+  projectId: "vechile-rent-app",
+  storageBucket: "vechile-rent-app.firebasestorage.app",
+  messagingSenderId: "952055962961",
+  appId: "1:952055962961:web:0d291dd596adedff394770",
+  measurementId: "G-6MMYH4Y06V"
 };
 
 // Initialize Firebase
