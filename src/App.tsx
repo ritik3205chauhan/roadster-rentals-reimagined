@@ -13,6 +13,9 @@ import { OwnerDashboard } from "./pages/owner/OwnerDashboard";
 import { SignIn } from "./pages/auth/SignIn";
 import { SignUp } from "./pages/auth/SignUp";
 import { AddVehicle } from "./pages/owner/AddVehicle";
+import { Bookings } from "./pages/owner/Bookings";
+import { Analytics } from "./pages/owner/Analytics";
+import { EditVehicle } from "./pages/owner/EditVehicle";
 import { VehicleDetail } from "./pages/VehicleDetail";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -47,6 +50,21 @@ const App = () => (
               <Route path="/owner/add-vehicle" element={
                 <ProtectedRoute>
                   <AddVehicle />
+                </ProtectedRoute>
+              } />
+              <Route path="/owner/bookings" element={
+                <ProtectedRoute>
+                  <Bookings />
+                </ProtectedRoute>
+              } />
+              <Route path="/owner/analytics" element={
+                <ProtectedRoute>
+                  <Analytics />
+                </ProtectedRoute>
+              } />
+              <Route path="/owner/edit-vehicle/:id" element={
+                <ProtectedRoute>
+                  <EditVehicle />
                 </ProtectedRoute>
               } />
               <Route path="/auth/signin" element={<SignIn />} />

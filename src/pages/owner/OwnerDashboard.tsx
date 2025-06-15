@@ -317,8 +317,10 @@ export const OwnerDashboard = () => {
                               </Badge>
                             </div>
                           </div>
-                          <Button variant="ghost" size="icon">
-                            <Edit className="h-4 w-4" />
+                          <Button variant="ghost" size="icon" asChild>
+                            <Link to={`/owner/edit-vehicle/${vehicle.id}`}>
+                              <Edit className="h-4 w-4" />
+                            </Link>
                           </Button>
                         </div>
                         <div className="grid grid-cols-3 gap-2 text-sm">
