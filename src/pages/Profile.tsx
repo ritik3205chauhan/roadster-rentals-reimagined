@@ -8,11 +8,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
+import { VerificationDashboard } from '@/components/verification/VerificationDashboard';
+import { VerificationStatus } from '@/types/verification';
+import { useNavigate } from 'react-router-dom';
 import { User, Mail, Phone, MapPin, Calendar, Star, Shield } from 'lucide-react';
 
 export const Profile = () => {
   const { currentUser } = useAuth();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [profileData, setProfileData] = useState({
     displayName: currentUser?.displayName || '',
@@ -20,6 +24,20 @@ export const Profile = () => {
     phone: '',
     location: '',
     bio: '',
+  });
+
+  // Mock verification status - in real app, this would come from Firestore
+  const [verificationStatus] = useState<VerificationStatus>({
+    personal: {
+      status: 'pending',
+      documents: [],
+      lastUpdated: new Date(),
+    },
+    vehicle: {
+      status: 'pending',
+      documents: [],
+      lastUpdated: new Date(),
+    },
   });
 
   const handleSave = async () => {
@@ -40,6 +58,14 @@ export const Profile = () => {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleStartVerification = (type: 'personal' | 'vehicle') => {
+    if (type === 'personal') {
+      navigate('/verification/personal');
+    } else {
+      navigate('/verification/vehicle');
     }
   };
 
@@ -67,8 +93,15 @@ export const Profile = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Profile Form */}
-            <div className="lg:col-span-2">
+            {/* Verification Dashboard */}
+            <div className="lg:col-span-2 space-y-6">
+              <VerificationDashboard 
+                verification={verificationStatus}
+                userRole="customer" // In real app, get from user profile
+                onStartVerification={handleStartVerification}
+              />
+              
+              {/* Profile Form */}
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">

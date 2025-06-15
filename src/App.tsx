@@ -21,6 +21,8 @@ import { OwnerProfile } from "./pages/owner/OwnerProfile";
 import { VehicleDetail } from "./pages/VehicleDetail";
 import { Profile } from "./pages/Profile";
 import { Security } from "./pages/Security";
+import { PersonalVerification } from "./pages/verification/PersonalVerification";
+import { VehicleVerification } from "./pages/verification/VehicleVerification";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -79,6 +81,16 @@ const App = () => (
               <Route path="/security" element={
                 <ProtectedRoute>
                   <Security />
+                </ProtectedRoute>
+              } />
+              <Route path="/verification/personal" element={
+                <ProtectedRoute>
+                  <PersonalVerification />
+                </ProtectedRoute>
+              } />
+              <Route path="/verification/vehicle" element={
+                <ProtectedRoute>
+                  <VehicleVerification />
                 </ProtectedRoute>
               } />
               <Route path="/auth/signin" element={<SignIn />} />
