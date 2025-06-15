@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { VehicleCard } from "@/components/VehicleCard";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
+import { SEOHead } from "@/components/SEOHead";
 import { Search, Filter, Grid2X2, List, MapPin } from "lucide-react";
 
 const vehicles = [
@@ -307,7 +308,13 @@ export const Browse = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead 
+        title="Browse Vehicles - Roadster Rentals"
+        description="Browse and rent from thousands of vehicles worldwide. Cars, motorcycles, scooters available for rent with instant booking and competitive prices."
+        keywords="browse vehicles, rent car, motorcycle rental, scooter rental, vehicle search, instant booking"
+      />
+      <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         {/* Search Header */}
         <motion.div
@@ -316,9 +323,9 @@ export const Browse = () => {
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <Card className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-              <div className="md:col-span-2">
+          <Card className="p-4 sm:p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="sm:col-span-2 md:col-span-2">
                 <label className="text-sm font-medium mb-2 block">Location</label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -338,7 +345,7 @@ export const Browse = () => {
                 <label className="text-sm font-medium mb-2 block">Return Date</label>
                 <Input type="date" />
               </div>
-              <div className="flex items-end">
+              <div className="flex items-end sm:col-span-2 md:col-span-1">
                 <Button 
                   size="lg" 
                   className="w-full"
@@ -360,7 +367,7 @@ export const Browse = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className={`${showFilters ? 'block' : 'hidden'} lg:block w-full lg:w-80 shrink-0`}
           >
-            <Card className="p-6 sticky top-24">
+            <Card className="p-4 lg:p-6 sticky top-24">
               <h3 className="font-semibold text-lg mb-4">Filters</h3>
               
               {/* Price Range */}
@@ -498,11 +505,11 @@ export const Browse = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className={
-                viewMode === "grid"
-                  ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
-                  : "space-y-4"
-              }
+                className={
+                  viewMode === "grid"
+                    ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6"
+                    : "space-y-4"
+                }
             >
               {sortedVehicles.map((vehicle, index) => (
                 <motion.div
@@ -531,5 +538,6 @@ export const Browse = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };

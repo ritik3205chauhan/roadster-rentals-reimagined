@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SEOHead } from "@/components/SEOHead";
 import { Search, Car, Shield, Clock, Star, AlertTriangle, MapPin, Settings, DollarSign, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -197,7 +198,13 @@ const registrationExamples = [
 
 export const HowItWorks = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead 
+        title="How It Works - Roadster Rentals"
+        description="Learn how to rent and list vehicles on Roadster Rentals. Complete guide for customers and owners with step-by-step verification process."
+        keywords="how it works, vehicle rental guide, car sharing process, rental verification, vehicle listing guide"
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/10 via-background to-primary/5 py-20 overflow-hidden">
         <div className="container mx-auto px-4">
@@ -207,10 +214,10 @@ export const HowItWorks = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
               How It Works
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 px-4">
               Everything you need to know about renting and listing vehicles on our platform
             </p>
           </motion.div>
@@ -227,8 +234,8 @@ export const HowItWorks = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">For Customers</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">For Customers</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto px-4">
               From registration to return, we've streamlined every step for a seamless rental experience
             </p>
           </motion.div>
@@ -241,7 +248,7 @@ export const HowItWorks = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center"
               >
                 <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="flex items-center gap-4 mb-6">
@@ -250,7 +257,7 @@ export const HowItWorks = () => {
                     </div>
                     <div>
                       <Badge variant="outline" className="mb-2">Step {index + 1}</Badge>
-                      <h3 className="text-2xl font-semibold">{step.title}</h3>
+                      <h3 className="text-xl sm:text-2xl font-semibold">{step.title}</h3>
                     </div>
                   </div>
                   <p className="text-muted-foreground mb-6">{step.description}</p>
@@ -289,8 +296,8 @@ export const HowItWorks = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">For Vehicle Owners</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">For Vehicle Owners</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto px-4">
               List your vehicle and start earning passive income with our comprehensive protection system
             </p>
           </motion.div>
@@ -452,7 +459,7 @@ export const HowItWorks = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {registrationExamples.map((example, index) => (
               <motion.div
                 key={example.vehicleType}
@@ -561,7 +568,7 @@ export const HowItWorks = () => {
             <p className="text-muted-foreground text-lg mb-8">
               Join thousands of users who trust our platform for safe, reliable vehicle rentals
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Button size="lg" asChild>
                 <Link to="/browse">
                   <Car className="mr-2 h-4 w-4" />
@@ -579,5 +586,6 @@ export const HowItWorks = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
