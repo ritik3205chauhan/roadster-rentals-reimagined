@@ -12,6 +12,10 @@ import { HowItWorks } from "./pages/HowItWorks";
 import { OwnerDashboard } from "./pages/owner/OwnerDashboard";
 import { SignIn } from "./pages/auth/SignIn";
 import { SignUp } from "./pages/auth/SignUp";
+import { AddVehicle } from "./pages/owner/AddVehicle";
+import { VehicleDetail } from "./pages/VehicleDetail";
+import { Profile } from "./pages/Profile";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,7 +33,22 @@ const App = () => (
               <Route path="/" element={<Landing />} />
               <Route path="/browse" element={<Browse />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
-              <Route path="/owner/dashboard" element={<OwnerDashboard />} />
+              <Route path="/vehicle/:id" element={<VehicleDetail />} />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              } />
+              <Route path="/owner/dashboard" element={
+                <ProtectedRoute>
+                  <OwnerDashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/owner/add-vehicle" element={
+                <ProtectedRoute>
+                  <AddVehicle />
+                </ProtectedRoute>
+              } />
               <Route path="/auth/signin" element={<SignIn />} />
               <Route path="/auth/signup" element={<SignUp />} />
               <Route path="*" element={<NotFound />} />

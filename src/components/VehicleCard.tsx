@@ -1,8 +1,8 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Star, MapPin, Users, Car } from "lucide-react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface Vehicle {
   id: string;
@@ -19,76 +19,59 @@ interface Vehicle {
 
 interface VehicleCardProps {
   vehicle: Vehicle;
-  onBook?: (vehicleId: string) => void;
 }
 
-export const VehicleCard = ({ vehicle, onBook }: VehicleCardProps) => {
+export const VehicleCard = ({ vehicle }: VehicleCardProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
-    >
-      <Card className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-        <div className="relative overflow-hidden">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+      <CardContent className="p-0">
+        <div className="aspect-video relative">
           <img
             src={vehicle.image}
             alt={vehicle.name}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover"
           />
-          <Badge className="absolute top-3 left-3 bg-primary/90 text-primary-foreground">
+          <Badge className="absolute top-3 left-3 bg-white/90 text-black hover:bg-white">
             {vehicle.category}
           </Badge>
         </div>
-        
-        <CardContent className="p-4">
-          <div className="flex items-start justify-between mb-2">
-            <h3 className="font-semibold text-lg truncate">{vehicle.name}</h3>
-            <div className="flex items-center space-x-1 text-sm">
-              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              <span className="font-medium">{vehicle.rating}</span>
+        <div className="p-4 space-y-3">
+          <div className="flex items-start justify-between">
+            <h3 className="font-semibold text-lg">{vehicle.name}</h3>
+            <div className="text-right">
+              <div className="font-bold text-lg">${vehicle.price}</div>
+              <div className="text-xs text-muted-foreground">per day</div>
             </div>
           </div>
           
-          <div className="flex items-center text-muted-foreground text-sm mb-3">
-            <MapPin className="h-4 w-4 mr-1" />
-            <span className="truncate">{vehicle.location}</span>
+          <div className="flex items-center gap-1 text-sm">
+            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+            <span className="font-medium">{vehicle.rating}</span>
+            <span className="text-muted-foreground mx-2">•</span>
+            <MapPin className="h-4 w-4 text-muted-foreground" />
+            <span className="text-muted-foreground">{vehicle.location}</span>
           </div>
           
-          <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center">
-                <Users className="h-4 w-4 mr-1" />
-                <span>{vehicle.seats}</span>
+          <div className="flex items-center justify-between text-sm text-muted-foreground">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <Users className="h-4 w-4" />
+                <span>{vehicle.seats} seats</span>
               </div>
-              <div className="flex items-center">
-                <Car className="h-4 w-4 mr-1" />
+              <div className="flex items-center gap-1">
+                <Car className="h-4 w-4" />
                 <span>{vehicle.transmission}</span>
               </div>
             </div>
-            <Badge variant="outline" className="text-xs">
-              {vehicle.fuel}
-            </Badge>
           </div>
           
-          <div className="flex items-center justify-between">
-            <div>
-              <span className="text-2xl font-bold text-primary">${vehicle.price}</span>
-              <span className="text-muted-foreground">/day</span>
-            </div>
-          </div>
-        </CardContent>
-        
-        <CardFooter className="p-4 pt-0">
-          <Button 
-            className="w-full" 
-            onClick={() => onBook?.(vehicle.id)}
-          >
-            Book Now
+          <Button className="w-full" size="sm" asChild>
+            <Link to={`/vehicle/${vehicle.id}`}>
+              View Details
+            </Link>
           </Button>
-        </CardFooter>
-      </Card>
-    </motion.div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };

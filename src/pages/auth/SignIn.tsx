@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,10 @@ export const SignIn = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
+  
+  const from = location.state?.from?.pathname || '/';
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ export const SignIn = () => {
         title: "Welcome back!",
         description: "You've been successfully signed in.",
       });
-      navigate('/');
+      navigate(from, { replace: true });
     } catch (error: any) {
       toast({
         title: "Sign in failed",
@@ -48,7 +51,7 @@ export const SignIn = () => {
         title: "Welcome back!",
         description: "You've been successfully signed in with Google.",
       });
-      navigate('/');
+      navigate(from, { replace: true });
     } catch (error: any) {
       toast({
         title: "Sign in failed",
