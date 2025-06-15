@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { SecurityProvider } from "@/components/security/SecurityProvider";
 import { Header } from "@/components/Header";
 import { Landing } from "./pages/Landing";
 import { Browse } from "./pages/Browse";
@@ -19,6 +20,7 @@ import { EditVehicle } from "./pages/owner/EditVehicle";
 import { OwnerProfile } from "./pages/owner/OwnerProfile";
 import { VehicleDetail } from "./pages/VehicleDetail";
 import { Profile } from "./pages/Profile";
+import { Security } from "./pages/Security";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -28,7 +30,8 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="system" storageKey="vehicle-rental-theme">
       <AuthProvider>
-        <TooltipProvider>
+        <SecurityProvider>
+          <TooltipProvider>
           <Toaster />
           <Sonner />
           <BrowserRouter>
@@ -73,12 +76,18 @@ const App = () => (
                   <OwnerProfile />
                 </ProtectedRoute>
               } />
+              <Route path="/security" element={
+                <ProtectedRoute>
+                  <Security />
+                </ProtectedRoute>
+              } />
               <Route path="/auth/signin" element={<SignIn />} />
               <Route path="/auth/signup" element={<SignUp />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
+        </SecurityProvider>
       </AuthProvider>
     </ThemeProvider>
   </QueryClientProvider>

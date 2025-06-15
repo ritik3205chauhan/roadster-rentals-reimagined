@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
-import { Car, Menu, X, LogOut, User } from "lucide-react";
+import { Car, Menu, X, LogOut, User, Shield } from "lucide-react";
 import { useState } from "react";
 import {
   DropdownMenu,
@@ -82,6 +82,12 @@ export const Header = () => {
                     Dashboard
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/security" className="flex items-center">
+                    <Shield className="mr-2 h-4 w-4" />
+                    Security
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={logout} className="flex items-center">
                   <LogOut className="mr-2 h-4 w-4" />
@@ -145,6 +151,12 @@ export const Header = () => {
                     <Link to="/owner/dashboard" onClick={() => setMobileMenuOpen(false)}>
                       <Car className="mr-2 h-4 w-4" />
                       Dashboard
+                    </Link>
+                  </Button>
+                  <Button variant="ghost" asChild className="w-full justify-start">
+                    <Link to="/security" onClick={() => setMobileMenuOpen(false)}>
+                      <Shield className="mr-2 h-4 w-4" />
+                      Security
                     </Link>
                   </Button>
                   <Button 
