@@ -4,7 +4,7 @@ export const luxuryVehicles: Vehicle[] = [
   {
     id: "7",
     name: "Mercedes C-Class",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&h=300&fit=crop",
     price: 95,
     rating: 4.7,
     location: "Berlin, Germany",
