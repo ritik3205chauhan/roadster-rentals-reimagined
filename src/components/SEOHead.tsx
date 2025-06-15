@@ -10,7 +10,7 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({
-  title = "Roadster Rentals - Premium Vehicle Rental Platform",
+  title = "Rent Flow - Premium Vehicle Rental Platform",
   description = "Rent cars, motorcycles, and scooters from trusted owners worldwide. Find the perfect vehicle for your journey with flexible booking and competitive prices.",
   keywords = "car rental, motorcycle rental, scooter rental, vehicle sharing, peer-to-peer rental, roadster rentals",
   image = "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1200&h=630&fit=crop",
@@ -47,7 +47,7 @@ export const SEOHead = ({
     updateMetaTag('og:image', image, true);
     updateMetaTag('og:url', url, true);
     updateMetaTag('og:type', type, true);
-    updateMetaTag('og:site_name', 'Roadster Rentals', true);
+    updateMetaTag('og:site_name', 'Rent Flow', true);
     
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image');
@@ -56,7 +56,7 @@ export const SEOHead = ({
     updateMetaTag('twitter:image', image);
     
     // Additional SEO tags
-    updateMetaTag('author', 'Roadster Rentals');
+    updateMetaTag('author', 'Rent Flow');
     updateMetaTag('theme-color', '#3b82f6');
     
     // Canonical URL

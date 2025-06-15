@@ -32,7 +32,7 @@ export const Browse = () => {
   return (
     <>
       <SEOHead 
-        title="Browse Vehicles - Roadster Rentals"
+        title="Browse Vehicles - Rent Flow"
         description="Browse and rent from thousands of vehicles worldwide. Cars, motorcycles, scooters available for rent with instant booking and competitive prices."
         keywords="browse vehicles, rent car, motorcycle rental, scooter rental, vehicle search, instant booking"
       />

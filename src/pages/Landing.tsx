@@ -87,7 +87,7 @@ export const Landing = () => {
   return (
     <>
       <SEOHead 
-        title="Roadster Rentals - Premium Vehicle Rental Platform"
+        title="Rent Flow - Premium Vehicle Rental Platform"
         description="Rent cars, motorcycles, and scooters from trusted owners worldwide. Find the perfect vehicle for your journey with flexible booking and competitive prices."
         keywords="car rental, motorcycle rental, scooter rental, vehicle sharing, peer-to-peer rental, global vehicle rental"
       />

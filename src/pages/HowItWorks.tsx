@@ -200,8 +200,8 @@ export const HowItWorks = () => {
   return (
     <>
       <SEOHead 
-        title="How It Works - Roadster Rentals"
-        description="Learn how to rent and list vehicles on Roadster Rentals. Complete guide for customers and owners with step-by-step verification process."
+        title="How It Works - Rent Flow"
+        description="Learn how to rent and list vehicles on Rent Flow. Complete guide for customers and owners with step-by-step verification process."
         keywords="how it works, vehicle rental guide, car sharing process, rental verification, vehicle listing guide"
       />
       <div className="min-h-screen bg-background">

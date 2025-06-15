@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'app.lovable.7e0089480b4343128846f537ed03f9ff',
-  appName: 'roadster-rentals-reimagined',
+  appName: 'rent-flow',
   webDir: 'dist',
   bundledWebRuntime: false,
   server: {
