@@ -158,6 +158,14 @@ export const Bookings = () => {
     return matchesSearch && matchesStatus;
   });
 
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+  };
+
+  const handleStatusFilter = (value: string) => {
+    setStatusFilter(value);
+  };
+
   const stats = {
     total: bookings.length,
     confirmed: bookings.filter(b => b.status === 'confirmed').length,
@@ -268,17 +276,17 @@ export const Bookings = () => {
               <Input
                 placeholder="Search bookings..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => handleSearch(e.target.value)}
                 className="pl-10"
               />
             </div>
           </div>
           
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <Select value={statusFilter} onValueChange={handleStatusFilter}>
             <SelectTrigger className="w-40">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-background border shadow-lg z-50">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="confirmed">Confirmed</SelectItem>
               <SelectItem value="pending">Pending</SelectItem>

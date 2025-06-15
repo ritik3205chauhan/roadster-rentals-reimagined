@@ -160,6 +160,55 @@ export const Browse = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [priceRange, setPriceRange] = useState([0, 200]);
   const [showFilters, setShowFilters] = useState(false);
+  const [searchLocation, setSearchLocation] = useState("");
+  const [vehicleType, setVehicleType] = useState("all");
+  const [transmission, setTransmission] = useState("all");
+  const [fuelType, setFuelType] = useState("all");
+  const [sortBy, setSortBy] = useState("price-low");
+
+  // Filter and search logic
+  const filteredVehicles = vehicles.filter(vehicle => {
+    const matchesLocation = !searchLocation || 
+      vehicle.location.toLowerCase().includes(searchLocation.toLowerCase());
+    
+    const matchesPrice = vehicle.price >= priceRange[0] && vehicle.price <= priceRange[1];
+    
+    const matchesType = vehicleType === "all" || 
+      vehicle.category.toLowerCase() === vehicleType;
+    
+    const matchesTransmission = transmission === "all" || 
+      vehicle.transmission.toLowerCase() === transmission;
+    
+    const matchesFuel = fuelType === "all" || 
+      vehicle.fuel.toLowerCase() === fuelType;
+    
+    return matchesLocation && matchesPrice && matchesType && matchesTransmission && matchesFuel;
+  });
+
+  // Sort logic
+  const sortedVehicles = [...filteredVehicles].sort((a, b) => {
+    switch (sortBy) {
+      case "price-low":
+        return a.price - b.price;
+      case "price-high":
+        return b.price - a.price;
+      case "rating":
+        return b.rating - a.rating;
+      case "newest":
+        return 0; // Would sort by creation date in real app
+      default:
+        return 0;
+    }
+  });
+
+  const clearFilters = () => {
+    setSearchLocation("");
+    setVehicleType("all");
+    setTransmission("all");
+    setFuelType("all");
+    setPriceRange([0, 200]);
+    setSortBy("price-low");
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -177,7 +226,12 @@ export const Browse = () => {
                 <label className="text-sm font-medium mb-2 block">Location</label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Where to?" className="pl-10" />
+                  <Input 
+                    placeholder="Where to?" 
+                    className="pl-10" 
+                    value={searchLocation}
+                    onChange={(e) => setSearchLocation(e.target.value)}
+                  />
                 </div>
               </div>
               <div>
@@ -189,9 +243,13 @@ export const Browse = () => {
                 <Input type="date" />
               </div>
               <div className="flex items-end">
-                <Button size="lg" className="w-full">
+                <Button 
+                  size="lg" 
+                  className="w-full"
+                  onClick={() => {/* Search functionality already working via filters */}}
+                >
                   <Search className="mr-2 h-4 w-4" />
-                  Search
+                  Search ({sortedVehicles.length} found)
                 </Button>
               </div>
             </div>
@@ -228,11 +286,11 @@ export const Browse = () => {
               {/* Vehicle Type */}
               <div className="mb-6">
                 <label className="text-sm font-medium mb-3 block">Vehicle Type</label>
-                <Select>
+                <Select value={vehicleType} onValueChange={setVehicleType}>
                   <SelectTrigger>
                     <SelectValue placeholder="All Types" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border shadow-lg z-50">
                     <SelectItem value="all">All Types</SelectItem>
                     <SelectItem value="compact">Compact</SelectItem>
                     <SelectItem value="suv">SUV</SelectItem>
@@ -249,11 +307,11 @@ export const Browse = () => {
               {/* Transmission */}
               <div className="mb-6">
                 <label className="text-sm font-medium mb-3 block">Transmission</label>
-                <Select>
+                <Select value={transmission} onValueChange={setTransmission}>
                   <SelectTrigger>
                     <SelectValue placeholder="All" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border shadow-lg z-50">
                     <SelectItem value="all">All</SelectItem>
                     <SelectItem value="automatic">Automatic</SelectItem>
                     <SelectItem value="manual">Manual</SelectItem>
@@ -264,11 +322,11 @@ export const Browse = () => {
               {/* Fuel Type */}
               <div className="mb-6">
                 <label className="text-sm font-medium mb-3 block">Fuel Type</label>
-                <Select>
+                <Select value={fuelType} onValueChange={setFuelType}>
                   <SelectTrigger>
                     <SelectValue placeholder="All Fuels" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border shadow-lg z-50">
                     <SelectItem value="all">All Fuels</SelectItem>
                     <SelectItem value="gasoline">Gasoline</SelectItem>
                     <SelectItem value="electric">Electric</SelectItem>
@@ -278,7 +336,7 @@ export const Browse = () => {
                 </Select>
               </div>
 
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full" onClick={clearFilters}>
                 Clear Filters
               </Button>
             </Card>
@@ -295,7 +353,7 @@ export const Browse = () => {
             >
               <div className="flex items-center gap-4">
                 <h2 className="text-2xl font-bold">Available Vehicles</h2>
-                <Badge variant="secondary">{vehicles.length} results</Badge>
+                <Badge variant="secondary">{sortedVehicles.length} results</Badge>
               </div>
               
               <div className="flex items-center gap-2">
@@ -308,11 +366,11 @@ export const Browse = () => {
                   <Filter className="h-4 w-4" />
                 </Button>
                 
-                <Select defaultValue="price-low">
+                <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger className="w-40">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border shadow-lg z-50">
                     <SelectItem value="price-low">Price: Low to High</SelectItem>
                     <SelectItem value="price-high">Price: High to Low</SelectItem>
                     <SelectItem value="rating">Highest Rated</SelectItem>
@@ -350,7 +408,7 @@ export const Browse = () => {
                   : "space-y-4"
               }
             >
-              {vehicles.map((vehicle, index) => (
+              {sortedVehicles.map((vehicle, index) => (
                 <motion.div
                   key={vehicle.id}
                   initial={{ opacity: 0, y: 20 }}

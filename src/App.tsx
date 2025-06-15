@@ -16,6 +16,7 @@ import { AddVehicle } from "./pages/owner/AddVehicle";
 import { Bookings } from "./pages/owner/Bookings";
 import { Analytics } from "./pages/owner/Analytics";
 import { EditVehicle } from "./pages/owner/EditVehicle";
+import { OwnerProfile } from "./pages/owner/OwnerProfile";
 import { VehicleDetail } from "./pages/VehicleDetail";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -65,6 +66,11 @@ const App = () => (
               <Route path="/owner/edit-vehicle/:id" element={
                 <ProtectedRoute>
                   <EditVehicle />
+                </ProtectedRoute>
+              } />
+              <Route path="/owner/profile" element={
+                <ProtectedRoute>
+                  <OwnerProfile />
                 </ProtectedRoute>
               } />
               <Route path="/auth/signin" element={<SignIn />} />
