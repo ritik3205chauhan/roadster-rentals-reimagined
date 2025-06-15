@@ -4,7 +4,7 @@ export const suvs: Vehicle[] = [
   {
     id: "4",
     name: "BMW X5",
-    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=300&fit=crop",
     price: 120,
     rating: 4.8,
     location: "London, UK",

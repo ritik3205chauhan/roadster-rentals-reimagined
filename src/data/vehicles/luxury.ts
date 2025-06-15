@@ -28,7 +28,7 @@ export const luxuryVehicles: Vehicle[] = [
   {
     id: "25",
     name: "Porsche 911",
-    image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop",
     price: 195,
     rating: 4.9,
     location: "Stuttgart, Germany",
@@ -40,7 +40,7 @@ export const luxuryVehicles: Vehicle[] = [
   {
     id: "26",
     name: "Lamborghini Huracán",
-    image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?w=400&h=300&fit=crop",
     price: 350,
     rating: 4.8,
     location: "Monaco",
@@ -52,7 +52,7 @@ export const luxuryVehicles: Vehicle[] = [
   {
     id: "27",
     name: "Ferrari 488 GTB",
-    image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=300&fit=crop",
     price: 395,
     rating: 4.9,
     location: "Maranello, Italy",
@@ -64,7 +64,7 @@ export const luxuryVehicles: Vehicle[] = [
   {
     id: "28",
     name: "Bentley Continental GT",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&h=300&fit=crop",
     price: 285,
     rating: 4.8,
     location: "London, UK",
@@ -88,7 +88,7 @@ export const luxuryVehicles: Vehicle[] = [
   {
     id: "66",
     name: "Maserati Ghibli",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&h=300&fit=crop",
     price: 165,
     rating: 4.7,
     location: "Modena, Italy",
@@ -100,7 +100,7 @@ export const luxuryVehicles: Vehicle[] = [
   {
     id: "67",
     name: "Genesis G90",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=300&fit=crop",
     price: 125,
     rating: 4.6,
     location: "Seoul, South Korea",
